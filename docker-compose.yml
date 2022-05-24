@@ -1,0 +1,54 @@
+version: '3.9'
+services:
+  php-fpm:
+    build:
+      dockerfile: docker/backend/php-fpm/Dockerfile
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+      - mysql
+  php-cli:
+    build:
+      context: docker/
+      dockerfile: backend/php-cli/Dockerfile
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+      - mysql
+  app:
+    build:
+      dockerfile: docker/backend/nginx/Dockerfile
+    volumes:
+      - ./app:/app
+    depends_on:
+      - php-fpm
+      - mysql
+      - redis
+    ports:
+      - "80:80"
+  redis:
+    build:
+      dockerfile: docker/redis/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - /docker/redis:/usr/local/etc/redis
+  mysql:
+      image: mysql:5.7
+      cap_add:
+        - SYS_NICE
+      environment:
+        MYSQL_DATABASE: 'db'
+        MYSQL_USER: 'user'
+        MYSQL_PASSWORD: 'password'
+        MYSQL_ROOT_PASSWORD: 'password'
+      restart: always
+      ports:
+        - '3306:3306'
+      volumes:
+        - /docker/backend/mysql:/var/lib/mysql
+
+
