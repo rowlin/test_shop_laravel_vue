@@ -1,8 +1,6 @@
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get clean
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends apt-utils
 
@@ -36,7 +34,7 @@ RUN apt-get install -y php8.1-cli php8.1-dev \
        php8.1-msgpack php8.1-igbinary php8.1-redis php8.1-swoole \
        php8.1-memcached php8.1-pcov php8.1-xdebug
 # install node js
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 
 # Cleanup
