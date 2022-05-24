@@ -36,6 +36,7 @@ RUN apt-get install -y php8.1-cli php8.1-dev \
 # install node js
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g npm@8.10.0
 
 # Cleanup
 RUN apt-get clean
