@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code', 10);
+            $table->double('price')->default(0.0);
             $table->text('description');
             $table->unsignedInteger('category_id');
             $table->boolean('status')->default(true);//active
+            $table->integer('available_count')->default(1);
             $table->timestamps();
         });
     }
