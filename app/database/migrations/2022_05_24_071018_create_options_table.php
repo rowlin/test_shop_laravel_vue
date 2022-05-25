@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->string('name' , 255);
+            $table->string('name' , 255)->unique();
         });
 
         Schema::create('pivot_options_product', function (Blueprint $table) {

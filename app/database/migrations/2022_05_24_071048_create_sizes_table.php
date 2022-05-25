@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');// L , M , XL
+            $table->string('name')->unique();// L , M , XL
         });
 
         Schema::create('pivot_size_product' , function (Blueprint $table){

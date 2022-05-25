@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name' , 60)->unique();
-        });
-
-        Schema::create('pivot_tag_product', function (Blueprint $table){
-            $table->unsignedInteger('tag_id');
-            $table->unsignedInteger('product_id');
+            $table->string('name');
+            $table->text('text');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
         });
     }
 
@@ -31,7 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
-        Schema::dropIfExists('pivot_tag_product');
+        Schema::dropIfExists('posts');
     }
 };
