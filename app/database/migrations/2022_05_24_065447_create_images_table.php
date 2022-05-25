@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('path');
             $table->string('seo');
+            $table->unsignedInteger('product_id');
         });
     }
 

@@ -12,4 +12,7 @@ class Category extends Model
 
     public $timestamps = false;
 
+    public function product(){
+        return $this->belongsToMany(Product::class , 'pivot_category_product');
+    }
 }

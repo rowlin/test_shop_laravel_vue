@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,10 @@ class ImageFactory extends Factory
     {
         return [
             'path' => $this->faker->image( ),
-            'seo' => $this->faker->text(60)
+            'seo' => $this->faker->text(60),
+            'product_id' =>  function (){
+                return  Product::first()->id ;
+             },
         ];
     }
 }

@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name' , 60)->unique();
         });
+        Schema::create('pivot_category_product' , function(Blueprint $table){
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('product_id');
+        });
     }
 
     /**
@@ -27,5 +31,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('categories');
+        Schema::dropIfExists('pivot_category_product');
     }
 };

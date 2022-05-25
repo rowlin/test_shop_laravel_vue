@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Option;
+use App\Models\Tag;
+use Database\Factories\SizeFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,17 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CategoriesSeeder::class);
+        $this->call(SizesSeeder::class);
+        Tag::factory(10)->create();
+        Option::factory(30)->create();
+        $this->call(ImageSeeder::class);
 
-        \App\Models\Option::factory(5)->create();
-        \App\Models\Category::factory(3)->create();
-        \App\Models\Tag::factory(2)->create();
-        \App\Models\Size::factory(3)->create();
-        \App\Models\Image::factory(4)->create();
-        \App\Models\User::factory(1)->create();
-        \App\Models\Category::factory(3)->create();
-        \App\Models\Product::factory(5)->create();
-        //    \App\Models\Order::factory(1)->create();
-        \App\Models\Post::factory(6)->create();
 
 
 

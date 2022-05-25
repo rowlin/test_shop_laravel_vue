@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Shop</title>
+    <title>@yield('title' , "Shop")</title>
     <!-- Styles -->
     <link rel="stylesheet"  href="{{ mix('/css/app.css') }}" />
 </head>

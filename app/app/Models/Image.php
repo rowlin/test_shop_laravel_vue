@@ -12,4 +12,9 @@ class Image extends Model
     protected $fillable = ['path' , 'seo'];
 
     public $timestamps = false;
+
+    public function product(){
+        return $this->belongsTo(Product::class , 'product_id');
+    }
+
 }
