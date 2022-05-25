@@ -19,13 +19,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->word,
             'code' => Str::random(10),
             'description' => $this->faker->text,
-            'price' => rand(50, 1000),
-            'category_id' => function (){
-             return Category::first()->id ?? Category::factory(1)->create()->id;
-            },
+            'price' => $this->faker->randomFloat(2),
+            'category_id' => Category::all()->random()->id ,
             'available_count' => rand(10 , 100),
             'status'=> true//active
         ];

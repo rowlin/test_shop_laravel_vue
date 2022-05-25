@@ -17,7 +17,7 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique('name')->name()
+            'name' => $this->faker->unique('name')->word() . '_' . rand(1, 100)// ??
         ];
     }
 }

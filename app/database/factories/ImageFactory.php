@@ -21,7 +21,7 @@ class ImageFactory extends Factory
             'path' => $this->faker->image( ),
             'seo' => $this->faker->text(60),
             'product_id' =>  function (){
-                return  Product::first()->id ;
+                return  Product::all()->random()->id ;
              },
         ];
     }
