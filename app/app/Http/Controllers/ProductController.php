@@ -11,17 +11,11 @@ use Illuminate\Database\Eloquent\Builder;
 class ProductController extends Controller
 {
 
-    protected function getProducts(){
-        return  Product::where('status' , 1);
-    }
-
     public function index(){
-        $products =  $this->getProducts()->paginate(6);
-        return view('main.index' , compact('products') );
+        return view('main.index');
     }
 
     public function show(Product $product){
-
         return view('main.show' , compact('product'));
     }
 

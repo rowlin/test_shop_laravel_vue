@@ -22,7 +22,6 @@ class Product extends Model
         return 'slug' ;
     }
 
-
     public function getPriceWithDiscountAttribute(){
         if($this->discount() && isset($this->discount->procent) ){
            return number_format($this->price + ($this->price * $this->discount->procent / 100) , 2);

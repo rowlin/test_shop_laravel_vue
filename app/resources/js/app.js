@@ -22,7 +22,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 */
 
 Vue.component('shopListComponent', require('./components/ShopListComponent.vue').default);
-
+Vue.component('slider' , require('./components/Slider.vue').default )
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
