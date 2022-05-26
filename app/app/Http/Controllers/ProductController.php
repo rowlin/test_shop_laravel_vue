@@ -21,6 +21,7 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
+
         return view('main.show' , compact('product'));
     }
 
@@ -29,6 +30,7 @@ class ProductController extends Controller
             $q->orderBy($request->get('orderBy') , 'DESC');
         })->paginate($request->has('perPage') ? $request->get('curPage') : 6);
     }
+
 
 
 

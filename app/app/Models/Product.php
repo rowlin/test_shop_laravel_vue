@@ -10,16 +10,18 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name' , 'code' , 'description' , 'category_id' , 'status' , 'price' ,  'available_count' , 'discount_id'];
+    protected $fillable = ['name' , 'code' , 'description' , 'category_id' , 'slug' , 'status' , 'price' ,  'available_count' , 'discount_id'];
 
     protected $with = ['images' , 'discount'];
     //'categories' , 'tags', 'options' , 'categories'
 
-    protected $appends = [ 'price_with_discount' , 'url' ];
+    protected $appends = [ 'price_with_discount'];
 
-    public function getUrlAttribute(){
-        return '/product/'. Str::slug($this->attributes['name']);
+    public function getRouteKeyName()
+    {
+        return 'slug' ;
     }
+
 
     public function getPriceWithDiscountAttribute(){
         if($this->discount() && isset($this->discount->procent) ){

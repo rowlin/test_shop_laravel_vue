@@ -22,7 +22,8 @@
                     <div class="row">
                         <div class="col-4 mb-5"  v-for="(product , index ) in products.data" :key="index">
                             <div class="shop__thumb">
-                                <a :href="product.url" class="text-decoration-none">
+
+                                <a :href="'product/' +product.slug" class="text-decoration-none">
                                     <div class="shop-thumb__img m-3">
                                         <div v-if="product.discount && product.discount.position === 0" style="position: absolute;margin:10px ">
                                             <div :style="'background-color:'+ product.discount.color + ';padding:5px; color:#fff;' ">
@@ -105,6 +106,7 @@ import axios from 'axios'
             goTo(page){
                 this.page = page;
                 this.loadData();
+                scroll(0 , 0);
             }
         }
 

@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', "App\Http\Controllers\ProductController@index");
+Route::get('/product/{product_slug}' , "App\Http\Controllers\ProductController@show" );
