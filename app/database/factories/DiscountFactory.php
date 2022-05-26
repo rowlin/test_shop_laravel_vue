@@ -17,9 +17,10 @@ class DiscountFactory extends Factory
     public function definition()
     {
         $procent = rand(10 , 30);
+        $array = ['Out of stock' , null , "{$procent} Off" ];
         return [
             'procent' => $procent,
-            'massage' => array_rand(['Out of stock' , null , "{$procent} Off" ])
+            'massage' => $array[rand(0 , sizeof($array))]
         ];
     }
 }

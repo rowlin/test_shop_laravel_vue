@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('products' , '"ProductController@get_list');
+Route::get('products' , 'ProductController@get_list');
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
