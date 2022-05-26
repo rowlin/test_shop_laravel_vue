@@ -2,6 +2,7 @@ init: docker-down-clear docker-pull docker-build docker-up
 up: docker-up
 down: docker-down
 restart: down up
+rebuild: restore-db build-fix
 sh:
 	docker-compose run --rm php-cli bash
 docker-cli-install:
@@ -22,3 +23,11 @@ redis-cli:
 	docker-compose exec redis redis-cli
 tests:
 	docker-compose run --rm php-cli ./vendor/bin/phpunit
+restore-db:
+	rm -Rf ./storage/app/images
+	docker-compose run --rm php-cli php artisan migrate:refresh --seed
+build-fix: #because artisan store:link does not work right (
+	rm -Rf ./app/public/images
+	chmod -R 777 ./app/storage/app/images
+	mv -f ./app/storage/app/images ./app/public/images
+	rm -Rf ./app/storage/app/images
