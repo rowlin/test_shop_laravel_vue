@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -14,14 +15,17 @@ class Product extends Model
     protected $with = ['images' , 'discount'];
     //'categories' , 'tags', 'options' , 'categories'
 
+    protected $appends = [ 'price_with_discount' , 'url' ];
 
-    protected $appends = [ 'price_with_discount' ];
+    public function getUrlAttribute(){
+        return '/product/'. Str::slug($this->attributes['name']);
+    }
 
     public function getPriceWithDiscountAttribute(){
         if($this->discount() && isset($this->discount->procent) ){
-           return $this->price + ($this->price * $this->discount->procent / 100);
+           return number_format($this->price + ($this->price * $this->discount->procent / 100) , 2);
         }else
-            return 0.0;
+            return 0.00;
     }
 
     public function getPriceAttribute(){

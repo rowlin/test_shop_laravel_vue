@@ -5,6 +5,6 @@
     <div class="row mb-3">
         <img src="{{ url('img/banner.png') }}" alt="Banner">
     </div>
-        <shop-list-component :products='{!!  json_encode($products->toArray()) !!}'></shop-list-component>
+        <shop-list-component :products-list='{!!  json_encode($products->toArray()) !!}'></shop-list-component>
     </div>
 @endsection

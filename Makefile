@@ -31,3 +31,6 @@ build-fix: #because artisan store:link does not work right (
 	chmod -R 777 ./app/storage/app/images
 	mv -f ./app/storage/app/images ./app/public/images
 	rm -Rf ./app/storage/app/images
+watch:
+	docker-compose run --rm php-cli npm run watch-poll
+
