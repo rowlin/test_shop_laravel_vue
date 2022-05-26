@@ -9,9 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name' , 'code' , 'description' , 'category_id' , 'status' , 'price' ,  'available_count'];
+    protected $fillable = ['name' , 'code' , 'description' , 'category_id' , 'status' , 'price' ,  'available_count' , 'discount_id'];
 
-    protected $with = ['images'];
+    protected $with = ['images' , 'discount'];
     //'categories' , 'tags', 'options' , 'categories'
 
     public function images(){
@@ -32,6 +32,10 @@ class Product extends Model
 
     public function size(){
         return $this->belongsToMany(Size::class, 'pivot_size_product');
+    }
+
+    public function discount(){
+        return $this->belongsTo(Discount::class);
     }
 
 

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Discount;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,7 @@ class ProductFactory extends Factory
             'code' => Str::random(10),
             'description' => $this->faker->text,
             'price' => $this->faker->randomFloat(2),
-            'category_id' => Category::all()->random()->id ,
+            'discount_id' => Discount::all()->random()->id ,
             'available_count' => rand(10 , 100),
             'status'=> true//active
         ];
