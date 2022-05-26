@@ -9,7 +9,7 @@ class Discount extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['procent' , 'massage'];
+    protected $fillable = ['procent' , 'message' , 'position' , 'color'];
 
     public $timestamps = false;
 }

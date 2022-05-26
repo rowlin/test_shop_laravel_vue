@@ -114,7 +114,7 @@ class ImageSeeder extends Seeder
                 $product_id = $product->id;
                 $res = $this->getImage($link);
                 $path = '/images/' . $product_id . '/' .$count.'.jpg' ;
-                Storage::put($path , $res , );
+                Storage::put($path , $res );
                 Image::factory(['path' => $path , 'product_id' => $product_id])->create();
             }
         }

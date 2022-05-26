@@ -27,7 +27,7 @@
                 <b class="m-2rem">TAGS</b>
                 <div class="tags">
                     @foreach($tags as $tag)
-                        <span  style="padding: 10px; border: solid 1px grey"><a href="#"> <b>{{ $tag['name'] }}</b></a></span>
+                            <a href="#" > <b style="border: solid 1px grey;">{{ $tag['name'] }}</b></a>
                     @endforeach
                 </div>
             </div>

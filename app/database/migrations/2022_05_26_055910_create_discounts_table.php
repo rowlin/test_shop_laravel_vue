@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
             $table->integer('procent')->nullable();
-            $table->string('massage' , 30)->nullable();
+            $table->string('message' , 30)->nullable();
+            $table->tinyInteger('position')->default(1);
+            $table->string('color');
         });
     }
 

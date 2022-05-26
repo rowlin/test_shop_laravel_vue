@@ -20,11 +20,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
+            'name' => $this->faker->firstNameFemale() . " dress",
             'code' => Str::random(10),
             'description' => $this->faker->text,
-            'price' => $this->faker->randomFloat(2),
-            'discount_id' => Discount::all()->random()->id ,
+            'price' => rand(50 , 100),
+            'discount_id' => null ,//Discount::all()->random()->id ,
             'available_count' => rand(10 , 100),
             'status'=> true//active
         ];

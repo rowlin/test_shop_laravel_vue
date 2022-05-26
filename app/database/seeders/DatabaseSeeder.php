@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         Discount::factory(3)->create();
         $this->call(CategoriesSeeder::class);
         $this->call(SizesSeeder::class);
-        Tag::factory(10)->create();
-        Option::factory(30)->create();
+        Tag::factory(2)->create();
+        Option::factory(10)->create();
         $this->call(ImageSeeder::class);
         User::factory(2)->create();
         Post::factory(7)->create();

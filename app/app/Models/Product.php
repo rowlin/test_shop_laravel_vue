@@ -14,6 +14,21 @@ class Product extends Model
     protected $with = ['images' , 'discount'];
     //'categories' , 'tags', 'options' , 'categories'
 
+
+    protected $appends = [ 'price_with_discount' ];
+
+    public function getPriceWithDiscountAttribute(){
+        if($this->discount() && isset($this->discount->procent) ){
+           return $this->price + ($this->price * $this->discount->procent / 100);
+        }else
+            return 0.0;
+    }
+
+    public function getPriceAttribute(){
+         return number_format(floatval($this->attributes['price']) , 2);
+    }
+
+
     public function images(){
         return $this->hasMany(Image::class ,'product_id' );
     }
