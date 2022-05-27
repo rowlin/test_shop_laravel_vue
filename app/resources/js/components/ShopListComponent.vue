@@ -77,8 +77,8 @@ import axios from 'axios'
                 filter_param : "updated_at"
             }
         },
-        created() {
-          this.loadData();
+        async created() {
+         await this.loadData();
         },
         methods:{
             loadData(){

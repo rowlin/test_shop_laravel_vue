@@ -13,7 +13,7 @@ class Product extends Model
     protected $fillable = ['name' , 'code' , 'description' , 'category_id' , 'slug' , 'status' , 'price' ,  'available_count' , 'discount_id'];
 
     protected $with = ['images' , 'discount'];
-    //'categories' , 'tags', 'options' , 'categories'
+    //'categories' , 'tags', 'options'
 
     protected $appends = [ 'price_with_discount'];
 
@@ -24,7 +24,7 @@ class Product extends Model
 
     public function getPriceWithDiscountAttribute(){
         if($this->discount() && isset($this->discount->procent) ){
-           return number_format($this->price + ($this->price * $this->discount->procent / 100) , 2);
+           return number_format($this->price - ($this->price * $this->discount->procent / 100) , 2);
         }else
             return 0.00;
     }
@@ -33,6 +33,9 @@ class Product extends Model
          return number_format(floatval($this->attributes['price']) , 2);
     }
 
+    public function firstImage(){
+        return $this->images()->take(1);
+    }
 
     public function images(){
         return $this->hasMany(Image::class ,'product_id' );
@@ -57,6 +60,8 @@ class Product extends Model
     public function discount(){
         return $this->belongsTo(Discount::class);
     }
+
+
 
 
 

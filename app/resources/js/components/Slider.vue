@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
     <div class="main-image">
         <a href="#" class="slider-arrow-prev big" v-if="images.length >1"
            @click.prevent="slidePrev('sliderBig')">
@@ -99,8 +99,8 @@ export default {
 
 <style scoped lang="scss">
 
-$secondary-color: grey;
-$logo-green: green;
+$secondary-color: white;
+$logo-green: white;
 
 .over-image-panel {
     width: 100%;
@@ -115,11 +115,11 @@ $logo-green: green;
 }
 
 .main-image {
+    max-height: 700px;
     position: relative;
     width: 100%;
     overflow: hidden;
     text-align: center;
-    background-color: rgba(191, 193, 195, 0.28);
 }
 
 .preview, .preview__other, .copy-link {

@@ -15,7 +15,7 @@
 
         <div class="col-md-3 text-end">
             <!--Todo: component-->
-            <button type="button" class="btn btn-primary me-2">Cart 0.00 e</button>
+            <button type="button" class="btn btn-primary me-2 br20">Cart 0.00 e</button>
         </div>
        </div>
     </div>

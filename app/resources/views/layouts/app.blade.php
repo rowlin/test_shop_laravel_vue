@@ -11,6 +11,7 @@
 <body>
     @include('common.header')
     <main id="app">
+        <side-bar-component></side-bar-component>
         @yield('content')
     </main>
     @include('common.footer')
