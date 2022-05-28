@@ -84,7 +84,7 @@ class ImageSeeder extends Seeder
         $rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         if($rescode !== 200){
-            $this->info("No file");
+            var_dump($rescode);
         }
         return  $res;
     }
