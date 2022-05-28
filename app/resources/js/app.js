@@ -16,6 +16,8 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+
+
 /*
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -26,10 +28,12 @@ Vue.component('slider' , require('./components/Slider.vue').default );
 Vue.component('addToCart' , require('./components/AddToCart').default);
 Vue.component('printList' , require('./components/PrintList').default);
 Vue.component('sideBarComponent' , require('./components/SideBarComponent').default );
-
+Vue.component('cart-button' , require('./components/CartButton').default);
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
+//maybe better to use vuex
+import Store from './store'
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,5 +41,6 @@ Vue.use(VueCookies)
  */
 
 const app = new Vue({
+    data: Store,
     el: '#app',
 });

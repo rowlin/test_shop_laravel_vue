@@ -42,7 +42,6 @@
 
                 <add-to-cart product="{{ $product->id }}"  max="{{ $product->available_count }}"></add-to-cart>
 
-
                 <div class="mt-4">
                     <span>SKU : {{ $product->code }}</span>
                 </div>
@@ -60,12 +59,7 @@
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"></div>
                     </div>
                 </div>
-
-
-
             </div>
-
-
 
     </div>
 
@@ -73,7 +67,9 @@
 @endsection
 <script>
     import AddToCart from "../../js/components/AddToCart";
+    import PrintList from "../../js/components/PrintList";
+    import Slider from "../../js/components/Slider";
     export default {
-        components: {AddToCart}
+        components: {Slider, PrintList, AddToCart}
     }
 </script>

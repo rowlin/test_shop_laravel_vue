@@ -41,11 +41,15 @@ export default {
                 } else {
                     cookie_rand = $cookies.get('shop_session');
                 }
-                await axios.post('/api/cache/'+ cookie_rand, {
+                const res = await axios.post('/api/cache/'+ cookie_rand, {
                     count: this.count,
                     product: this.product,
                 })
+                if(res.status === 200){
+                    this.$root.products = res.data;
+                }
             }
+            this.$root.showSideBar = true;
         }
     }
 

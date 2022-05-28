@@ -14,9 +14,9 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            <!--Todo: component-->
-            <button type="button" class="btn btn-primary me-2 br20">Cart 0.00 e</button>
+            <cart-button></cart-button>
         </div>
        </div>
     </div>
 </header>
+

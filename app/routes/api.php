@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('products' , 'App\Http\Controllers\ProductController@get_list');
 Route::post('cache/{cache}' , 'App\Http\Controllers\CacheController@put' );
-Route::delete('cache/{cache}', 'App\Http\Controllers\CacheController@delete' );
+Route::delete('cache/{cache}/{id}', 'App\Http\Controllers\CacheController@delete' );
 Route::get('cache/{cache}' , 'App\Http\Controllers\CacheController@get');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

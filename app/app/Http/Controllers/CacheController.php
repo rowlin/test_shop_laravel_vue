@@ -8,30 +8,40 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheController extends Controller
 {
-    public function get(Request $request){
-        $cache = Cache::get($request->get('cache'));
+
+    protected function getResult($cache){
         $data = [];
         foreach ($cache as $key => $count){
-           $data[$key] =  Product::where('id' , $key)->with('firstImage', 'discount')->without('images')->first();
-           //'id', 'name','code' , 'firstImages' ,'price'
-           $data[$key]['count'] = $count;
+            $product =  Product::where('id' , $key)->with('firstImage', 'discount')->without('images')->first();
+            $data[$key] =  $product;
+            //'id', 'name','code' , 'firstImages' ,'price'
+            $data[$key]['count'] = $count;
+            $data[$key]['price_total'] = (($product->price_with_discount > 0) ? $product->price_with_discount : $product->price) * $count;
         }
         return $data;
+    }
 
+    public function get(Request $request){
+        $cache = Cache::get($request->get('cache'));
+        return $cache ? $this->getResult($cache) : abort(404);
     }
 
     public function delete(Request $request){
-        return Cache::forget($request->get('cache'));
+        $cache = Cache::get($request->get('cache')); //pull retrives the value and removes it
+        unset($cache[$request->id]);
+        Cache::put($request->get('cache') ,$cache,60);
+        return $this->get($request);
     }
 
     public function put(Request $request){
         if(Cache::has($request->get('cache'))){
             $data = Cache::get($request->get('cache'));
             $data[$request->get('product')] = $request->get('count');
-           $res =  Cache::put($request->get('cache') , $data   , 20 *60 *60 );
+            Cache::put($request->get('cache') , $data   , 20 *60 *60 );
         }else
-           $res = Cache::put($request->get('cache') , [$request->get('product') => $request->get('count')]  , 20 *60 *60);
-        return $res;
+            Cache::put($request->get('cache') , [$request->get('product') => $request->get('count')]  , 20 *60 *60);
+
+        return $this->get($request);
     }
 
 }

@@ -9,8 +9,8 @@
     <link rel="stylesheet"  href="{{ mix('/css/app.css') }}" />
 </head>
 <body>
-    @include('common.header')
     <main id="app">
+        @include('common.header')
         <side-bar-component></side-bar-component>
         @yield('content')
     </main>
