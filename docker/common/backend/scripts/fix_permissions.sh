@@ -5,7 +5,7 @@ find -type f -exec chmod 664 {} \;
 find -type d -exec chmod 775 {} \;
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
-chmod a+x ./node_modules
+
 chmod a+x /vendor/bin/phpunit
 
 php artisan key:generate

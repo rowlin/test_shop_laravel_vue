@@ -1,4 +1,4 @@
-init-first: docker-down-clear docker-pull docker-build docker-up docker-cli-install docker-npm-install restore-db
+init-first: docker-down-clear docker-pull docker-build docker-up docker-cli-install docker-npm-install restore-db npm-fix-permission docker-npm-prod
 init: docker-down-clear docker-pull docker-build docker-up
 up: docker-up
 down: docker-down
@@ -9,7 +9,7 @@ sh:
 docker-cli-install:
 	docker-compose run --rm php-cli composer install
 docker-npm-prod:
-	docker-compose run --rm php-cli useradd -ms /bin/bash cli-user && su cli-user && npm run prod
+	docker-compose run --rm php-cli --user 1000:1000 npm run prod
 docker-npm-install:
 	docker-compose run --rm php-cli npm i
 docker-up:
@@ -29,7 +29,6 @@ redis-cli:
 tests:
 	docker-compose run --rm php-cli ./vendor/bin/phpunit
 restore-db:
-	rm -Rf ./storage/app/images
 	docker-compose run --rm php-cli php artisan migrate:refresh --seed
 build-fix: #because artisan store:link does not work right (
 	rm -Rf ./app/public/images
@@ -38,3 +37,7 @@ build-fix: #because artisan store:link does not work right (
 	rm -Rf ./app/storage/app/images
 watch:
 	docker-compose run --rm php-cli npm run watch-poll
+docker-fix-permission:
+	docker-compose run --rm php-cli bash /scripts/fix_permissions.sh
+npm-fix-permission:
+	docker-compose run --rm php-cli chown -Rf cli-user ./node_modules/

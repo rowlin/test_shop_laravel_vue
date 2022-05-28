@@ -46,8 +46,8 @@ RUN curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/
 
 COPY ./common/backend/scripts/ /scripts/
 
-#RUN useradd -ms /bin/bash cli-user
+RUN useradd -ms /bin/bash cli-user
 #USER cli-user
 
 WORKDIR /app
-CMD ["/bin/bash","/scripts/fix_permissions.sh"]
+CMD ["/bin/bash"]
