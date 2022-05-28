@@ -1,3 +1,4 @@
+init-first: docker-down-clear docker-pull docker-build docker-up docker-cli-install
 init: docker-down-clear docker-pull docker-build docker-up
 up: docker-up
 down: docker-down
@@ -6,7 +7,7 @@ rebuild: restore-db build-fix
 sh:
 	docker-compose run --rm php-cli bash
 docker-cli-install:
-	docker-compose run --rm php-cli composer install
+	docker-compose run --rm bash sh /scripts/fix_permissions.sh
 docker-up:
 	docker-compose up -d
 docker-down:
