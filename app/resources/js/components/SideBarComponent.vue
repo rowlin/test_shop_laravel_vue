@@ -72,9 +72,14 @@ export default {
               }
         },
         async minus(product_id , count){
-            const res = await axios.post('/api/cache/'+ $cookies.get('shop_session') , { product : product_id , count: --count });
-            if(res.status === 200){
-                this.$root.products = res.data;
+            if(count > 0) {
+                const res = await axios.post('/api/cache/' + $cookies.get('shop_session'), {
+                    product: product_id,
+                    count: --count
+                });
+                if (res.status === 200) {
+                    this.$root.products = res.data;
+                }
             }
         },
         hide(){

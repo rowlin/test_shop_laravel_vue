@@ -9,7 +9,7 @@ sh:
 docker-cli-install:
 	docker-compose run --rm php-cli composer install
 docker-npm-prod:
-	docker-compose run --rm php-cli npm run prod
+	docker-compose run --rm php-cli useradd -ms /bin/bash cli-user && su cli-user && npm run prod
 docker-npm-install:
 	docker-compose run --rm php-cli npm i
 docker-up:
@@ -38,4 +38,3 @@ build-fix: #because artisan store:link does not work right (
 	rm -Rf ./app/storage/app/images
 watch:
 	docker-compose run --rm php-cli npm run watch-poll
-

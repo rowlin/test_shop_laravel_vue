@@ -73,7 +73,7 @@ class ImageSeeder extends Seeder
     }
 
     protected function getImage(string $url) : string{
-        header("Content-Type: image/jpeg");
+       // header("Content-Type: image/jpeg");
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, false);
@@ -84,6 +84,7 @@ class ImageSeeder extends Seeder
         $rescode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         if($rescode !== 200){
+            var_dump($url);
             var_dump($rescode);
         }
         return  $res;
