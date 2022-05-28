@@ -30,7 +30,7 @@
     </div>
 
     <div class="d-flex mt-4">
-        <div class="btn btn-primary br20 w-100" @click="alert('OK!')">CHECKOUT</div>
+        <div class="btn btn-primary br20 w-100" @click="next">CHECKOUT</div>
     </div>
 
 
@@ -60,6 +60,8 @@ export default {
             const res = await axios.delete("/api/cache/" +$cookies.get('shop_session')+ "/" + id  );
             if(res.status === 200){
                 this.$root.products = res.data;
+            }else{
+                this.$root.products = [];
             }
         },
 
@@ -77,8 +79,13 @@ export default {
         },
         hide(){
             this.$root.showSideBar = false;
+        },
+        next(){
+            alert('ok');
+            console.log("checkout");
         }
-    }
+    },
+
 }
 </script>
 

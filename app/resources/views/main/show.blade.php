@@ -2,12 +2,11 @@
 
 
 @section('content')
-    <div class="d-flex justify-content-center pt-1">
-     <nav aria-label="breadcrumb " >
-            <ol class="breadcrumb ">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-                <li class="breadcrumb-item active" aria-current="page">Library</li>
+    <div class="d-flex justify-content-center pt-1 mb-3" style="background-color: #999999 ; ">
+     <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="margin-bottom: 0.5rem;">
+                <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active" style="color: #fff;" aria-current="page" >{{ $product->name }}</li>
             </ol>
      </nav>
     </div>
@@ -49,7 +48,7 @@
                 <print-list name="Tags" :data="{{ $product->tags }}"></print-list>
             </div>
 
-                <div class="d-flex align-items-start m-5">
+                <div class="d-flex align-items-start m-2" style="padding-top: 60px; padding-bottom: 60px; ">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Description</button>
                         <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Reviews(1)</button>
@@ -73,3 +72,14 @@
         components: {Slider, PrintList, AddToCart}
     }
 </script>
+<style scoped>
+    .breadcrumb > li > a{
+        color:#ffffff;
+    }
+
+    .nav-link{
+        background-color: #fff;
+        color: #1a202c;
+    }
+
+</style>
