@@ -78,7 +78,6 @@
     }
 
     .nav-link{
-        background-color: #fff;
         color: #1a202c;
     }
 

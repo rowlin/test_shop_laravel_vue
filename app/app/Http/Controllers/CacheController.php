@@ -23,13 +23,15 @@ class CacheController extends Controller
 
     public function get(Request $request){
         $cache = Cache::get($request->get('cache'));
-        return $cache ? $this->getResult($cache) : abort(404);
+        return $cache ? $this->getResult($cache) : [];
     }
 
     public function delete(Request $request){
         $cache = Cache::get($request->get('cache')); //pull retrives the value and removes it
-        unset($cache[$request->id]);
-        Cache::put($request->get('cache') ,$cache,60);
+        if($cache) {
+            unset($cache[$request->id]);
+            Cache::put($request->get('cache'), $cache, 60);
+        }
         return $this->get($request);
     }
 
