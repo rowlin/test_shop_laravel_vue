@@ -4,6 +4,17 @@ in terminal run :
 ```
 make init
 ```
+and please run `npm run prod` from `cli-user` 
+```
+make sh 
+# su cli-user
+$ npm run prod
+```
+![media/fix-permissions.png](media/fix-permissions.png)
+
+(maybe later i can  to fix that problem)
+
+Result:
 
 ![media/docker-ps.png](media/docker-ps.png)
 
